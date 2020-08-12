@@ -8,15 +8,12 @@
     Private Sub NumberButtons_Click(sender As Object, e As EventArgs) Handles Button1.Click, Button2.Click, Button3.Click,
             Button4.Click, Button5.Click, Button6.Click, Button7.Click, Button8.Click, Button9.Click, Button10.Click,
             Button11.Click
-
         addValue(sender.Text)
     End Sub
 
     Private Sub calcButtons_Click(sender As Object, e As EventArgs) Handles addBT.Click, subBT.Click, mulBT.Click, divBT.Click
         '계산 모드가 지정되어 있고 이전값이 존재할시
-        If Not calcMode = 0 And Not prevVal = "" Then
-            runCalc(False)
-        End If
+        If Not calcMode = 0 And Not prevVal = "" Then runCalc(False)
 
         Select Case sender.Name
             Case addBT.Name
@@ -115,7 +112,6 @@
     End Sub
 
     Private Sub addValue(value As String)
-
         '계산 모드가 지정되었다면
         If Not calcMode = 0 Then
             '이전 계산값이 없는 경우라면
@@ -154,9 +150,7 @@
 
     Private Sub pmBT_Click(sender As Object, e As EventArgs) Handles pmBT.Click
         '유효한 숫자 값일때
-        If IsNumeric(TextBox1.Text) Then
-            TextBox1.Text = (Convert.ToDouble(TextBox1.Text) * -1).ToString
-        End If
+        If IsNumeric(TextBox1.Text) Then TextBox1.Text = (Convert.ToDouble(TextBox1.Text) * -1).ToString
     End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -190,9 +184,7 @@
             Case Keys.Back
                 TextBox1.Text = Mid(TextBox1.Text, 1, TextBox1.Text.Length - 1)
             Case Keys.Add, Keys.OemMinus, Keys.Subtract, Keys.Multiply, Keys.Divide
-                If Not calcMode = 0 And Not prevVal = "" Then
-                    runCalc(False)
-                End If
+                If Not calcMode = 0 And Not prevVal = "" Then runCalc(False)
 
                 Select Case e.KeyCode
                     Case Keys.Add
